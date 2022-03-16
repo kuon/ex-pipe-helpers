@@ -49,6 +49,7 @@ defmodule PipeHelpers do
         case source do
           "ola" -> {:ok, "hello"}
           _ -> {:error, "can't translate, sorry"}
+        end
       end
 
   And the quoting function that you want to pipe into:
