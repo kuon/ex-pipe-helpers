@@ -2,7 +2,7 @@ defmodule PipeHelpers.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/kuon/ex-pipe-helpers"
-  @version "1.0.1"
+  @version "1.0.2"
 
   def project do
     [
