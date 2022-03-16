@@ -24,3 +24,5 @@ pipe_helpers-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+/docs/

@@ -24,7 +24,8 @@ be found at <https://hexdocs.pm/pipe_helpers>.
 ## Documentation
 
 
-The library is extensively documentd in the main module documentation.
+The library is documented in the
+[main module documentation](https://hexdocs.pm/pipe_helpers/PipeHelpers.html).
 
 Small example:
 
