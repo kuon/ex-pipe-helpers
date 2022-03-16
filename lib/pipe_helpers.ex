@@ -8,9 +8,9 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> socket = "socket"
-  ...> socket |> ok()
-  {:ok, "socket"}
+      iex> socket = "socket"
+      ...> socket |> ok()
+      {:ok, "socket"}
 
   """
   def ok(val) do
@@ -22,9 +22,9 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> state = "gen server state"
-  ...> state |> noreply()
-  {:noreply, "gen server state"}
+      iex> state = "gen server state"
+      ...> state |> noreply()
+      {:noreply, "gen server state"}
 
   """
   def noreply(val) do
@@ -36,10 +36,10 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> state = "gen server state"
-  ...> r = "reply"
-  ...> state |> reply(r)
-  {:reply, "reply", "gen server state"}
+      iex> state = "gen server state"
+      ...> r = "reply"
+      ...> state |> reply(r)
+      {:reply, "reply", "gen server state"}
 
   """
   def reply(state, reply) do
@@ -51,8 +51,8 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> 1 |> pair(2)
-  {2, 1}
+      iex> 1 |> pair(2)
+      {2, 1}
 
   """
   def pair(val, res) do
@@ -64,8 +64,8 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> 1 |> rpair(2)
-  {1, 2}
+      iex> 1 |> rpair(2)
+      {1, 2}
 
   """
   def rpair(val, res) do
@@ -77,8 +77,8 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> {:ok, 1} |> unpair()
-  1
+      iex> {:ok, 1} |> unpair()
+      1
 
   """
   def unpair({_val, res}) do
@@ -90,14 +90,14 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> {:ok, "somedata"} |> tap_ok(fn -> "only executed when {:ok, ...}" end)
-  {:ok, "somedata"}
+      iex> {:ok, "somedata"} |> tap_ok(fn -> "only executed when {:ok, ...}" end)
+      {:ok, "somedata"}
 
-  iex> {:ok, "somedata"} |> tap_ok(fn _val ->
-  ...>   _ = "only executed when {:ok, ...}"
-  ...>   "val is available as optional argument"
-  ...> end)
-  {:ok, "somedata"}
+      iex> {:ok, "somedata"} |> tap_ok(fn _val ->
+      ...>   _ = "only executed when {:ok, ...}"
+      ...>   "val is available as optional argument"
+      ...> end)
+      {:ok, "somedata"}
 
   """
   def tap_ok(result, fun) do
@@ -110,8 +110,8 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> true |> tap_on(true, fn -> "only executed when true" end)
-  true
+      iex> true |> tap_on(true, fn -> "only executed when true" end)
+      true
 
   """
   def tap_on(result, value, fun) do
@@ -124,15 +124,15 @@ defmodule PipeHelpers do
 
   ## Example
 
-  iex> {:ok, "somedata"} |> then_ok(fn -> "only executed when {:ok, ...}" end)
-  "only executed when {:ok, ...}"
+      iex> {:ok, "somedata"} |> then_ok(fn -> "only executed when {:ok, ...}" end)
+      "only executed when {:ok, ...}"
 
-  iex> {:ok, "somedata"} |> then_ok(fn val ->
-  ...>   _ = "only executed when {:ok, ...}"
-  ...>   _ = "val is available as optional argument"
-  ...>   val
-  ...> end)
-  "somedata"
+      iex> {:ok, "somedata"} |> then_ok(fn val ->
+      ...>   _ = "only executed when {:ok, ...}"
+      ...>   _ = "val is available as optional argument"
+      ...>   val
+      ...> end)
+      "somedata"
 
   """
   def then_ok({:ok, ok_val} = _result, fun) do
