@@ -1,3 +1,8 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kuon/ex-pipe-helpers/Elixir%20CI)
+![Hex.pm](https://img.shields.io/hexpm/v/pipe_helpers)
+![License Hex.pm](https://img.shields.io/hexpm/l/pipe_helpers)
+
+
 # PipeHelpers
 
 Pipe helpers are a set of simple helpers for elixir to help structure code with
@@ -5,24 +10,19 @@ pipes.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+The package can be installed
 by adding `pipe_helpers` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:pipe_helpers, "~> 0.1.0"}
+    {:pipe_helpers, "~> 1.0.1"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/pipe_helpers>.
-
 
 ## Documentation
-
 
 The library is documented in the
 [main module documentation](https://hexdocs.pm/pipe_helpers/PipeHelpers.html).

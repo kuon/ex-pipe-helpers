@@ -9,7 +9,7 @@ defmodule PipeHelpers.MixProject do
       name: "PipeHelpers",
       app: :pipe_helpers,
       version: @version,
-      elixir: "~> 1.13",
+      elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       docs: docs(),
