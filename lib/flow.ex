@@ -43,4 +43,17 @@ defmodule PipeHelpers.Flow do
     then_ok(result, nil, fun)
     result
   end
+
+  def map_ok({:ok, state}, fun) do
+    fun
+    |> Function.info()
+    |> Keyword.get(:arity)
+    |> case do
+      0 -> fun.()
+      1 -> fun.(state)
+      _ -> raise "then_ok function arity can only be 0 or 1"
+    end
+  end
+
+  def map_ok(result, _fun), do: result
 end
