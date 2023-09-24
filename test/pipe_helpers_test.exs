@@ -13,6 +13,11 @@ defmodule PipeHelpersTest do
            |> reply("reply") == {:reply, "reply", "state"}
   end
 
+  test "rreply" do
+    assert "reply"
+           |> rreply("state") == {:reply, "reply", "state"}
+  end
+
   test "noreply" do
     assert "state"
            |> noreply() == {:noreply, "state"}

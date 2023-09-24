@@ -132,6 +132,21 @@ defmodule PipeHelpers do
   end
 
   @doc """
+  Wrap into `{:reply, reply, state}` tuple (genserver and phoenix socket format).
+
+  ## Example
+
+      iex> state = "gen server state"
+      ...> r = "reply"
+      ...> r |> rreply(state)
+      {:reply, "reply", "gen server state"}
+
+  """
+  def rreply(reply, state) do
+    {:reply, reply, state}
+  end
+
+  @doc """
   Wrap into generic tuple pair.
 
   ## Example
