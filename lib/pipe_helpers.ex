@@ -246,6 +246,10 @@ defmodule PipeHelpers do
     end
   end
 
+  def then_ok(:ok, fun) do
+    fun.()
+  end
+
   def then_ok(result, _fun), do: result
 
   @doc """

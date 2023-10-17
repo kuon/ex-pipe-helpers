@@ -84,6 +84,16 @@ defmodule PipeHelpersTest do
     assert_received "doe"
   end
 
+  test "then_ok/match nodata" do
+    assert :ok
+           |> then_ok(fn ->
+             send(self(), "ok")
+             1
+           end) == 1
+
+    assert_received "ok"
+  end
+
   test "then_ok/bypass" do
     assert {:error, "doe"}
            |> then_ok(fn _v ->
