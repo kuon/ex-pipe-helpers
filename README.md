@@ -1,4 +1,4 @@
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kuon/ex-pipe-helpers/Elixir%20CI)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/kuon/ex-pipe-helpers/elixir.yml?branch=main)
 ![Hex.pm](https://img.shields.io/hexpm/v/pipe_helpers)
 ![License Hex.pm](https://img.shields.io/hexpm/l/pipe_helpers)
 
