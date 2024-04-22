@@ -43,6 +43,15 @@ defmodule PipeHelpersTest do
            |> unpair() == "doe"
   end
 
+  test "unwrap" do
+    assert {:ok, "hello"}
+           |> unwrap() == "hello"
+  end
+
+  test "unwrap error" do
+    assert_raise MatchError, fn -> {:error, "hello"} |> unwrap() end
+  end
+
   test "tap_ok/match" do
     assert {:ok, "doe"}
            |> tap_ok(fn v ->

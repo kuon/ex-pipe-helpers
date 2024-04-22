@@ -198,6 +198,21 @@ defmodule PipeHelpers do
     res
   end
 
+
+  @doc """
+  Unwrap a tuple, but raise if not `{:ok, value}`
+
+  ## Example
+
+      iex> {:ok, "hello"} |> unwrap()
+      "hello"
+
+  """
+  def unwrap(val) do
+    {:ok, val} = val
+    val
+  end
+
   @doc """
   Execute `fun` function only if `result` is an ok-tuple. Returns the input in any case.
 
