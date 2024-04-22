@@ -8,6 +8,11 @@ defmodule PipeHelpersTest do
            |> ok() == {:ok, "socket"}
   end
 
+  test "error" do
+    assert :not_found
+           |> err() == {:error, :not_found}
+  end
+
   test "reply" do
     assert "state"
            |> reply("reply") == {:reply, "reply", "state"}

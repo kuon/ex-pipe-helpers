@@ -103,6 +103,19 @@ defmodule PipeHelpers do
   end
 
   @doc """
+  Wrap into standard `{:error, result}` tuple.
+
+  ## Example
+
+      iex> :not_found |> err()
+      {:error, :not_found}
+
+  """
+  def err(val) do
+    {:error, val}
+  end
+
+  @doc """
   Wrap into `{:noreply, state}` tuple (genserver and phoenix socket format).
 
   ## Example
