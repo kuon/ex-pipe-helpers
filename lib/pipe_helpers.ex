@@ -204,11 +204,11 @@ defmodule PipeHelpers do
 
   ## Example
 
-      iex> {:ok, "hello"} |> unwrap()
+      iex> {:ok, "hello"} |> unwrap!()
       "hello"
 
   """
-  def unwrap(val) do
+  def unwrap!(val) do
     {:ok, val} = val
     val
   end
