@@ -137,4 +137,24 @@ defmodule PipeHelpersTest do
 
     refute_received :ignore
   end
+
+  test "then_if/true" do
+    assert :value
+           |> then_if(true, fn v ->
+             send(self(), v)
+             v
+           end) == :value
+
+    assert_received :value
+  end
+
+  test "then_if/false" do
+    assert :value
+           |> then_if(false, fn v ->
+             send(self(), v)
+             v
+           end) == :value
+
+    refute_receive :value
+  end
 end

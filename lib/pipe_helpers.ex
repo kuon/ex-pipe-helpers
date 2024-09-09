@@ -295,4 +295,21 @@ defmodule PipeHelpers do
   end
 
   def then_on(result, _value, _fun), do: result
+
+  @doc """
+  Then only if condition is true.
+  """
+  def then_if(value, false, _), do: value
+  def then_if(value, true, fun) do
+    fun
+    |> Function.info()
+    |> Keyword.get(:arity)
+    |> case do
+      0 -> fun.()
+      1 -> fun.(value)
+      _ -> raise "then_if function arity can only be 0 or 1"
+    end
+  end
+
+  def then_if(result, _cond, _fun), do: result
 end
