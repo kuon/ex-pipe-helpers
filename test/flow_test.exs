@@ -26,6 +26,18 @@ defmodule FlowTest do
     == {:ok, %{a: "a val", b: "b val"}}
   end
 
+  test "simple new ok" do
+    assert Flow.new()
+    |> Flow.then_ok(:a, fn %{} ->
+      {:ok, "a val"}
+    end)
+    |> Flow.then_ok(:b, fn %{a: a} ->
+      assert a == "a val"
+      {:ok, "b val"}
+    end)
+    == {:ok, %{a: "a val", b: "b val"}}
+  end
+
   test "simple error" do
     assert Flow.start(:a, fn ->
       {:ok, "a val"}

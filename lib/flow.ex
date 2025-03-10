@@ -1,4 +1,8 @@
 defmodule PipeHelpers.Flow do
+  def new() do
+    {:ok, %{}}
+  end
+
   def start(name, fun) do
     start(name, %{}, fun)
   end
