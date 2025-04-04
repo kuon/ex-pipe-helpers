@@ -18,6 +18,21 @@ defmodule PipeHelpersTest do
            |> reply("reply") == {:reply, "reply", "state"}
   end
 
+  test "halt no reply" do
+    assert "state"
+           |> halt() == {:halt, "state"}
+  end
+
+  test "halt" do
+    assert "state"
+           |> halt("reply") == {:halt, "reply", "state"}
+  end
+
+  test "cont" do
+    assert "state"
+           |> cont() == {:cont, "state"}
+  end
+
   test "rreply" do
     assert "reply"
            |> rreply("state") == {:reply, "reply", "state"}

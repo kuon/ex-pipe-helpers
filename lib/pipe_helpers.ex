@@ -145,6 +145,30 @@ defmodule PipeHelpers do
   end
 
   @doc """
+  Wrap into `{:halt, state}` tuple (phoenix socket format).
+
+  """
+  def halt(state) do
+    {:halt, state}
+  end
+
+  @doc """
+  Wrap into `{:halt, reply, state}` tuple (phoenix socket format).
+
+  """
+  def halt(state, reply) do
+    {:halt, reply, state}
+  end
+
+  @doc """
+  Wrap into `{:cont, state}` tuple (phoenix socket format).
+
+  """
+  def cont(state) do
+    {:cont, state}
+  end
+
+  @doc """
   Wrap into `{:reply, reply, state}` tuple (genserver and phoenix socket format).
 
   ## Example
@@ -197,7 +221,6 @@ defmodule PipeHelpers do
   def unpair({_val, res}) do
     res
   end
-
 
   @doc """
   Unwrap a tuple, but raise if not `{:ok, value}`
@@ -300,6 +323,7 @@ defmodule PipeHelpers do
   Then only if condition is true.
   """
   def then_if(value, false, _), do: value
+
   def then_if(value, true, fun) do
     fun
     |> Function.info()
