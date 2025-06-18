@@ -133,6 +133,36 @@ defmodule PipeHelpersTest do
     refute_received :ignore
   end
 
+  test "on_error/match" do
+    assert {:error, "doe"}
+           |> on_error(fn v ->
+             send(self(), v)
+             1
+           end) == 1
+
+    assert_received "doe"
+  end
+
+  test "on_error/match nodata" do
+    assert :error
+           |> on_error(fn ->
+             send(self(), "err")
+             1
+           end) == 1
+
+    assert_received "err"
+  end
+
+  test "on_error/bypass" do
+    assert {:ok, "doe"}
+           |> on_error(fn _v ->
+             send(self(), :ignore)
+             1
+           end) == {:ok, "doe"}
+
+    refute_received :ignore
+  end
+
   test "then_on/match" do
     assert :error
            |> then_on(:error, fn v ->

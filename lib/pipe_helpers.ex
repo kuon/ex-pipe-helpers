@@ -304,6 +304,29 @@ defmodule PipeHelpers do
   def then_ok(result, _fun), do: result
 
   @doc """
+  If `result` is an error tuple, execute `fun` with the right part of `result` tuple as single argument
+  and return `fun` output.
+  Otherwise, return `result` as-is.
+
+  """
+  def on_error({:error, err_val} = _result, fun) do
+    fun
+    |> Function.info()
+    |> Keyword.get(:arity)
+    |> case do
+      0 -> fun.()
+      1 -> fun.(err_val)
+      _ -> raise "on_error function arity can only be 0 or 1"
+    end
+  end
+
+  def on_error(:error, fun) do
+    fun.()
+  end
+
+  def on_error(result, _fun), do: result
+
+  @doc """
   Then only if value match. See `then_ok/2` and `tap_ok/3`
   """
   def then_on(value, value, fun) do
