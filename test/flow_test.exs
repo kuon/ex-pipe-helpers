@@ -61,5 +61,17 @@ defmodule FlowTest do
     end)
     == "b valb val"
   end
+
+  test "finish with map" do
+    assert Flow.start(:a, fn ->
+      {:ok, "a val"}
+    end)
+    |> Flow.then_ok(:b, fn %{a: a} ->
+      assert a == "a val"
+      {:ok, "b val"}
+    end)
+    |> Flow.finish(:b)
+    == {:ok, "b val"}
+  end
 end
 

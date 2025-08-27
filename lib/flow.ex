@@ -60,4 +60,14 @@ defmodule PipeHelpers.Flow do
   end
 
   def map_ok(result, _fun), do: result
+
+  def finish({:ok, state}, key) do
+    if Map.has_key?(state, key) do
+      {:ok, Map.get(state, key)}
+    else
+      {:error, :key_undefined}
+    end
+  end
+
+  def finish(result, _key), do: result
 end
