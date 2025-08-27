@@ -48,6 +48,17 @@ defmodule FlowTest do
     == {:error, %{a: "a val"}, :b, :not_found}
   end
 
+  test "finish error" do
+    assert Flow.start(:a, fn ->
+      {:ok, "a val"}
+    end)
+    |> Flow.then_ok(:b, fn ->
+      {:error, :not_found}
+    end)
+    |> Flow.finish(:b)
+    == {:error, {:b, :not_found}}
+  end
+
   test "ok with map" do
     assert Flow.start(:a, fn ->
       {:ok, "a val"}

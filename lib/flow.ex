@@ -69,5 +69,9 @@ defmodule PipeHelpers.Flow do
     end
   end
 
+  def finish({:error, _state, k, err}, _key) do
+    {:error, {k, err}}
+  end
+
   def finish(result, _key), do: result
 end
