@@ -59,6 +59,19 @@ defmodule FlowTest do
     == {:error, {:b, :not_found}}
   end
 
+  test "on_error" do
+    assert Flow.start(:a, fn ->
+      {:ok, "a val"}
+    end)
+    |> Flow.then_ok(:b, fn ->
+      {:error, :not_found}
+    end)
+    |> Flow.on_error(fn %{a: a}, name, err ->
+        "error on #{name} is #{err} while a is #{a}"
+    end)
+    == "error on b is not_found while a is a val"
+  end
+
   test "ok with map" do
     assert Flow.start(:a, fn ->
       {:ok, "a val"}

@@ -74,4 +74,29 @@ defmodule PipeHelpers.Flow do
   end
 
   def finish(result, _key), do: result
+
+  @doc """
+  If `result` is an error tuple, execute `fun` with the right part of `result` tuple as single argument
+  and return `fun` output.
+  Otherwise, return `result` as-is.
+
+  """
+  def on_error({:error, state, err_name, err_val} = _result, fun) do
+    fun
+    |> Function.info()
+    |> Keyword.get(:arity)
+    |> case do
+      0 -> fun.()
+      1 -> fun.(err_name)
+      2 -> fun.(state, err_name)
+      3 -> fun.(state, err_name, err_val)
+      _ -> raise "on_error function arity can only be 0,1,2 or 3"
+    end
+  end
+
+  def on_error(:error, fun) do
+    fun.()
+  end
+
+  def on_error(result, _fun), do: result
 end
